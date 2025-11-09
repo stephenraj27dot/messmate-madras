@@ -6,7 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ShoppingCart, User, LogOut, Plus, Minus } from "lucide-react";
 import { foodItems, foodCategories } from "@/data/foodItems";
+import { foodImages } from "@/data/foodImages";
 import { toast } from "sonner";
+import mecLogo from "@/assets/mec-logo.png";
 
 interface CartItem {
   id: string;
@@ -48,11 +50,14 @@ const StudentDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-bg">
       {/* Header */}
-      <header className="bg-card shadow-card sticky top-0 z-50">
+      <header className="bg-card shadow-card sticky top-0 z-50 backdrop-blur-sm bg-card/95">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            MEC Food Hub
-          </h1>
+          <div className="flex items-center gap-3">
+            <img src={mecLogo} alt="MEC Logo" className="w-10 h-10 rounded-lg shadow-glow animate-float" />
+            <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+              MEC Food Hub
+            </h1>
+          </div>
           <div className="flex items-center gap-3">
             <Button
               variant="outline"
@@ -108,25 +113,33 @@ const StudentDashboard = () => {
                   .map((item, index) => (
                     <Card
                       key={item.id}
-                      className="group overflow-hidden hover:shadow-hover transition-all duration-300 hover:-translate-y-1 border-0 shadow-card animate-slide-up"
+                      className="group overflow-hidden hover:shadow-glow transition-all duration-500 hover:-translate-y-2 border-0 shadow-card animate-slide-up bg-card/80 backdrop-blur-sm"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
+                      {/* Food Image */}
+                      <div className="relative overflow-hidden h-48 bg-gradient-bg">
+                        <img 
+                          src={foodImages[item.id] || foodImages["idli"]} 
+                          alt={item.name}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
+                      </div>
+                      
                       <div className="p-5">
-                        <div className="flex justify-between items-start mb-3">
-                          <div>
-                            <h3 className="text-lg font-bold mb-1">{item.name}</h3>
-                            <p className="text-sm text-muted-foreground line-clamp-2">
-                              {item.description}
-                            </p>
-                          </div>
+                        <div className="mb-3">
+                          <h3 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors">{item.name}</h3>
+                          <p className="text-sm text-muted-foreground line-clamp-2">
+                            {item.description}
+                          </p>
                         </div>
                         <div className="flex justify-between items-center mt-4">
-                          <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                          <span className="text-2xl font-bold bg-gradient-accent bg-clip-text text-transparent">
                             ₹{item.price}
                           </span>
                           <Button
                             size="sm"
-                            className="bg-gradient-primary text-white shadow-3d hover:shadow-hover"
+                            className="bg-gradient-primary text-white shadow-glow hover:shadow-glow-accent transition-all duration-300 hover:scale-105"
                             onClick={() => addToCart(item)}
                           >
                             <Plus className="w-4 h-4 mr-1" />
@@ -143,7 +156,7 @@ const StudentDashboard = () => {
 
         {/* Cart Summary */}
         {cart.length > 0 && (
-          <Card className="fixed bottom-4 right-4 left-4 md:left-auto md:w-96 shadow-hover border-0 animate-bounce-in z-40">
+          <Card className="fixed bottom-4 right-4 left-4 md:left-auto md:w-96 shadow-glow border-0 animate-bounce-in z-40 bg-card/95 backdrop-blur-lg">
             <div className="p-4">
               <h3 className="text-lg font-bold mb-3">Cart Summary</h3>
               <div className="space-y-2 max-h-48 overflow-y-auto mb-3">
@@ -174,7 +187,7 @@ const StudentDashboard = () => {
                 </div>
               </div>
               <Button
-                className="w-full bg-gradient-secondary text-white shadow-3d hover:shadow-hover"
+                className="w-full bg-gradient-secondary text-white shadow-glow hover:shadow-glow-accent transition-all duration-300 hover:scale-105"
                 onClick={() => {
                   // Store cart in localStorage for payment page
                   localStorage.setItem("cart", JSON.stringify(cart));

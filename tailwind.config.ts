@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -116,6 +119,8 @@ export default {
         "3d": "var(--shadow-3d)",
         "card": "var(--shadow-card)",
         "hover": "var(--shadow-hover)",
+        "glow": "var(--shadow-glow)",
+        "glow-accent": "var(--shadow-glow-accent)",
       },
     },
   },

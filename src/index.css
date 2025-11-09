@@ -46,6 +46,8 @@ All colors MUST be HSL.
     --shadow-3d: 0 10px 30px -5px hsl(172 72% 37% / 0.3);
     --shadow-card: 0 4px 20px hsl(220 13% 13% / 0.08);
     --shadow-hover: 0 20px 40px -10px hsl(172 72% 37% / 0.4);
+    --shadow-glow: 0 0 20px hsl(172 72% 37% / 0.4), 0 0 40px hsl(172 72% 37% / 0.2);
+    --shadow-glow-accent: 0 0 20px hsl(37 90% 51% / 0.5), 0 0 40px hsl(37 90% 51% / 0.3);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,6 +103,8 @@ All colors MUST be HSL.
     --shadow-3d: 0 10px 30px -5px hsl(0 0% 0% / 0.5);
     --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
     --shadow-hover: 0 20px 40px -10px hsl(172 72% 37% / 0.6);
+    --shadow-glow: 0 0 20px hsl(172 72% 37% / 0.5), 0 0 40px hsl(172 72% 37% / 0.3);
+    --shadow-glow-accent: 0 0 20px hsl(37 90% 51% / 0.6), 0 0 40px hsl(37 90% 51% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

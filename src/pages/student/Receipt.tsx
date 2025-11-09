@@ -34,13 +34,13 @@ const Receipt = () => {
   const date = new Date(receipt.timestamp);
 
   return (
-    <div className="min-h-screen bg-gradient-bg flex items-center justify-center p-4">
-      <Card className="max-w-2xl w-full shadow-hover border-0 animate-bounce-in">
+    <div className="min-h-screen bg-gradient-bg flex items-center justify-center p-4 animate-fade-in">
+      <Card className="max-w-2xl w-full shadow-glow border-0 animate-bounce-in bg-card/95 backdrop-blur-lg">
         <div className="p-8">
           {/* Success Icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center shadow-3d animate-float">
-              <CheckCircle className="w-12 h-12 text-white" />
+            <div className="w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow animate-float">
+              <CheckCircle className="w-14 h-14 text-white drop-shadow-lg" />
             </div>
           </div>
 
@@ -121,7 +121,7 @@ const Receipt = () => {
               Download
             </Button>
             <Button
-              className="bg-gradient-primary text-white shadow-3d hover:shadow-hover"
+              className="bg-gradient-primary text-white shadow-glow hover:shadow-glow-accent transition-all duration-300 hover:scale-105"
               onClick={() => {
                 localStorage.removeItem("receipt");
                 navigate("/student/dashboard");
